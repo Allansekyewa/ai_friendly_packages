@@ -9,13 +9,11 @@ class AyinzaButton extends StatelessWidget {
   final AyinzaButtonType? type;
   final VoidCallback? onPressed;
   final Widget? child;
-
   final String? text;
   final bool isEnabled;
   final FocusNode? focusNode;
   final String? tooltip;
   final bool enableTooltip;
-
   final Color? backgroundColor;
   final Color? foregroundColor;
   final Color? disabledBackgroundColor;
@@ -26,17 +24,14 @@ class AyinzaButton extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
   final EdgeInsetsGeometry? margin;
   final AlignmentGeometry? alignment;
-
   final OutlinedBorder? shape;
   final BorderRadius? borderRadius;
   final BoxBorder? border;
   final BorderSide? borderSide;
   final bool dashedBorder;
   final List<double>? dashPattern;
-
   final List<BoxShadow>? boxShadow;
   final double? elevation;
-
   // Shadow direction properties
   final Offset? shadowOffset;
   final double? shadowBlurRadius;
@@ -266,18 +261,7 @@ class AyinzaButton extends StatelessWidget {
       button = Padding(padding: margin!, child: button);
     }
 
-    if (transform != null) {
-      button = Transform(transform: transform!, child: button);
-    }
-
-    if (enableTooltip && tooltip != null) {
-      button = Tooltip(
-        message: tooltip!,
-        waitDuration: tooltipWaitDuration,
-        child: button,
-      );
-    }
-
+    // --- FIX: Apply transform to the outermost widget if both dashedBorder and transform are set ---
     if (dashedBorder) {
       button = dotted_border.DottedBorder(
         borderType: dotted_border.BorderType.RRect,
@@ -292,6 +276,21 @@ class AyinzaButton extends StatelessWidget {
           borderRadius: borderRadius ?? BorderRadius.zero,
           child: button,
         ),
+      );
+      if (transform != null) {
+        button = Transform(transform: transform!, child: button);
+      }
+    } else {
+      if (transform != null) {
+        button = Transform(transform: transform!, child: button);
+      }
+    }
+
+    if (enableTooltip && tooltip != null) {
+      button = Tooltip(
+        message: tooltip!,
+        waitDuration: tooltipWaitDuration,
+        child: button,
       );
     }
 

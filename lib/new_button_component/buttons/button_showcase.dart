@@ -715,6 +715,29 @@ class AyinzaButtonTestScreen extends StatelessWidget {
                 borderRadius: BorderRadius.zero,
               ),
             ),
+             AyinzaButton(
+  type: AyinzaButtonType.elevated, // or outline, depending on intent
+  text: 'Skewed Dashed',
+  backgroundColor: Colors.red,
+  textStyle: const TextStyle(
+    color: Colors.white,
+    fontWeight: FontWeight.bold,
+  ),
+  transform: Matrix4.skewX(-0.19),
+  onPressed: () {},
+  width: 120,
+  height: 45,
+ 
+ 
+  elevation: 10,
+  borderRadius: BorderRadius.zero,
+  dashedBorder: true,
+  dashPattern: [2,1,4, 3], // Customize dash/gap as needed
+  borderSide: const BorderSide(color: Colors.black, width: 0.8), // Border color/width
+  shape: const RoundedRectangleBorder(
+    borderRadius: BorderRadius.zero,
+  ),
+),
 
             // Ultra Wide Button
             AyinzaButton(
@@ -862,9 +885,9 @@ class AyinzaButtonTestScreen extends StatelessWidget {
 
             AyinzaButton(
               type: AyinzaButtonType.toggle,
-             
+
               isSelected: true,
-              
+
               unselectedColor: Colors.grey.shade200,
               selectedTextColor: Colors.white,
               foregroundColor: Colors.black,
@@ -875,16 +898,17 @@ class AyinzaButtonTestScreen extends StatelessWidget {
               borderRadius: BorderRadius.circular(8),
             ),
             AyinzaButton(
-  type: AyinzaButtonType.toggle,
-  text: 'Notify',
-  isSelected: true,
-  toggleWithSwitch: true,
-  thumbIcon: CupertinoIcons.alarm, // Or use thumbChild: YourWidget()
-  onPressed: () {},
-  width: 180,
-  height: 45,
-  borderRadius: BorderRadius.circular(8),
-),
+              type: AyinzaButtonType.toggle,
+              text: 'Notify',
+              isSelected: true,
+              toggleWithSwitch: true,
+              thumbIcon:
+                  CupertinoIcons.alarm, // Or use thumbChild: YourWidget()
+              onPressed: () {},
+              width: 180,
+              height: 45,
+              borderRadius: BorderRadius.circular(8),
+            ),
 
             // Outline Button Examples
             AyinzaButton(
